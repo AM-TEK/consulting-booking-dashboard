@@ -1,13 +1,13 @@
 // Search for: 'jo', 'fa', 'mar', 'emm', 'ah'
 
-export const guests = [
+export const clients = [
   {
     // id: 1000,
-    fullName: 'Jonas Schmedtmann',
-    email: 'hello@jonas.io',
-    nationality: 'Portugal',
+    fullName: 'Alejandro Maldonado',
+    email: 'hello@alex.io',
+    nationality: 'American',
     nationalID: '3525436345',
-    countryFlag: 'https://flagcdn.com/pt.svg',
+    countryFlag: 'https://flagcdn.com/us.svg',
   },
   {
     fullName: 'Jonathan Smith',
