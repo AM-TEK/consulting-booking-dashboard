@@ -4,7 +4,7 @@ import supabase from "./supabase";
 export async function getBooking(id) {
   const { data, error } = await supabase
     .from("bookings")
-    .select("*, cabins(*), guests(*)")
+    .select("*, rooms(*), clients(*)")
     .eq("id", id)
     .single();
 
@@ -20,7 +20,8 @@ export async function getBooking(id) {
 export async function getBookingsAfterDate(date) {
   const { data, error } = await supabase
     .from("bookings")
-    .select("created_at, totalPrice, extrasPrice")
+    // .select("created_at, totalPrice, extrasPrice")
+    .select("created_at, totalPrice")
     .gte("created_at", date)
     .lte("created_at", getToday({ end: true }));
 
@@ -32,12 +33,12 @@ export async function getBookingsAfterDate(date) {
   return data;
 }
 
-// Returns all STAYS that are were created after the given date
+// Returns all BOOKINGS that are were created after the given date
 export async function getStaysAfterDate(date) {
   const { data, error } = await supabase
     .from("bookings")
     // .select('*')
-    .select("*, guests(fullName)")
+    .select("*, clients(fullName)")
     .gte("startDate", date)
     .lte("startDate", getToday());
 
@@ -53,7 +54,7 @@ export async function getStaysAfterDate(date) {
 export async function getStaysTodayActivity() {
   const { data, error } = await supabase
     .from("bookings")
-    .select("*, guests(fullName, nationality, countryFlag)")
+    .select("*, clients(fullName, nationality, countryFlag)")
     .or(
       `and(status.eq.unconfirmed,startDate.eq.${getToday()}),and(status.eq.checked-in,endDate.eq.${getToday()})`
     )
