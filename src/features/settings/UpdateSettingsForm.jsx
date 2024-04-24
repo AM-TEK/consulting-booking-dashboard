@@ -11,12 +11,12 @@ function UpdateSettingsForm() {
       <FormRow label='Maximum nights/booking'>
         <Input type='number' id='max-nights' />
       </FormRow>
-      <FormRow label='Maximum guests/booking'>
+      <FormRow label='Maximum clients/booking'>
         <Input type='number' id='max-guests' />
       </FormRow>
-      <FormRow label='Breakfast price'>
+      {/* <FormRow label='Breakfast price'>
         <Input type='number' id='breakfast-price' />
-      </FormRow>
+      </FormRow> */}
     </Form>
   );
 }

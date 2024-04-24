@@ -24,10 +24,10 @@ function CheckinBooking() {
 
   const {
     id: bookingId,
-    guests,
+    clients,
     totalPrice,
-    numGuests,
-    hasBreakfast,
+    numMembers,
+    // hasBreakfast,
     numNights,
   } = booking;
 
