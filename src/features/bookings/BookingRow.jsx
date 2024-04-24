@@ -7,7 +7,7 @@ import Table from "../../ui/Table";
 import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
 
-const Cabin = styled.div`
+const Room = styled.div`
   font-size: 1.6rem;
   font-weight: 600;
   color: var(--color-grey-600);
@@ -41,11 +41,11 @@ function BookingRow({
     startDate,
     endDate,
     numNights,
-    numGuests,
+    numClients,
     totalPrice,
     status,
-    guests: { fullName: guestName, email },
-    cabins: { name: cabinName },
+    clients: { fullName: clientName, email },
+    rooms: { name: roomName },
   },
 }) {
   const statusToTagName = {
@@ -56,10 +56,10 @@ function BookingRow({
 
   return (
     <Table.Row>
-      <Cabin>{cabinName}</Cabin>
+      <Room>{roomName}</Room>
 
       <Stacked>
-        <span>{guestName}</span>
+        <span>{clientName}</span>
         <span>{email}</span>
       </Stacked>
 

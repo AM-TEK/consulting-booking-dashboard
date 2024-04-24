@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { format, isToday } from "date-fns";
 import {
   HiOutlineChatBubbleBottomCenterText,
-  HiOutlineCheckCircle,
+  // HiOutlineCheckCircle,
   HiOutlineCurrencyDollar,
   HiOutlineHomeModern,
 } from "react-icons/hi2";
@@ -55,7 +55,7 @@ const Section = styled.section`
   padding: 3.2rem 4rem 1.2rem;
 `;
 
-const Guest = styled.div`
+const Client = styled.div`
   display: flex;
   align-items: center;
   gap: 1.2rem;
@@ -108,15 +108,15 @@ function BookingDataBox({ booking }) {
     startDate,
     endDate,
     numNights,
-    numGuests,
-    cabinPrice,
-    extrasPrice,
+    numClients,
+    roomPrice,
+    // extrasPrice,
     totalPrice,
-    hasBreakfast,
+    // hasBreakfast,
     observations,
     isPaid,
-    guests: { fullName: guestName, email, country, countryFlag, nationalID },
-    cabins: { name: cabinName },
+    clients: { fullName: clientName, email, country, countryFlag, nationalID },
+    rooms: { name: roomName },
   } = booking;
 
   return (
@@ -125,7 +125,7 @@ function BookingDataBox({ booking }) {
         <div>
           <HiOutlineHomeModern />
           <p>
-            {numNights} nights in Cabin <span>{cabinName}</span>
+            {numNights} nights in Room <span>{roomName}</span>
           </p>
         </div>
 
@@ -139,16 +139,16 @@ function BookingDataBox({ booking }) {
       </Header>
 
       <Section>
-        <Guest>
+        <Client>
           {countryFlag && <Flag src={countryFlag} alt={`Flag of ${country}`} />}
           <p>
-            {guestName} {numGuests > 1 ? `+ ${numGuests - 1} guests` : ""}
+            {clientName} {numClients > 1 ? `+ ${numClients - 1} clients` : ""}
           </p>
           <span>&bull;</span>
           <p>{email}</p>
           <span>&bull;</span>
           <p>National ID {nationalID}</p>
-        </Guest>
+        </Client>
 
         {observations && (
           <DataItem
@@ -159,21 +159,23 @@ function BookingDataBox({ booking }) {
           </DataItem>
         )}
 
-        <DataItem icon={<HiOutlineCheckCircle />} label="Breakfast included?">
+        {/* <DataItem icon={<HiOutlineCheckCircle />} label="Breakfast included?">
           {hasBreakfast ? "Yes" : "No"}
-        </DataItem>
+        </DataItem> */}
 
         <Price isPaid={isPaid}>
           <DataItem icon={<HiOutlineCurrencyDollar />} label={`Total price`}>
             {formatCurrency(totalPrice)}
 
-            {hasBreakfast &&
-              ` (${formatCurrency(cabinPrice)} cabin + ${formatCurrency(
+            {/* {hasBreakfast &&
+              ` (${formatCurrency(roomPrice)} room + ${formatCurrency(
                 extrasPrice
-              )} breakfast)`}
+              )} breakfast)`} */}
+            {
+              `${formatCurrency(roomPrice)} room}`}
           </DataItem>
 
-          <p>{isPaid ? "Paid" : "Will pay at property"}</p>
+          <p>{isPaid ? "Paid" : "Will pay at office"}</p>
         </Price>
       </Section>
 
